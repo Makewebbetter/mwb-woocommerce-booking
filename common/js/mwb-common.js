@@ -33,8 +33,17 @@
 			$('.mbfw_time_picker').timepicker();
 		}
 		
-		$(document).on('change', 'form.cart  :input', function(){
+		$(document).on('change', 'form.cart  :input', function(e){
             var form_data = new FormData( $('form.cart')[0] );
+			if ('twelve_hour' == mwb_mbfw_public_obj.wps_diaplay_time_format ) {
+				
+				for (let [key, value] of form_data.entries()) {
+					if (key === 'wps_booking_single_calendar_form' && key != null ) {
+					form_data.set('wps_booking_single_calendar_form', convertTimeFormat(value));
+					}
+				}
+			}
+
 			if ( $('.mwb_mbfw_booking_product_id').val() ) {
 				retrieve_booking_total_ajax( form_data );
 			}
@@ -44,6 +53,15 @@
 		$(document).on('focusout blur keydown paste focus mousedown mouseover mouseout', '.mwb-mbfw-cart-page-data', function () {
 			
 			var form_data = new FormData( $('form.cart')[0] );
+			if ('twelve_hour' == mwb_mbfw_public_obj.wps_diaplay_time_format ) {
+				
+				for (let [key, value] of form_data.entries()) {
+					if (key === 'wps_booking_single_calendar_form' && key != null ) {
+					form_data.set('wps_booking_single_calendar_form', convertTimeFormat(value));
+					}
+				}
+			}
+
 			if ( $('.mwb_mbfw_booking_product_id').val() ) {
 				retrieve_booking_total_ajax( form_data );
 			}
@@ -212,7 +230,18 @@
 	});
 
 })( jQuery );
+function convertTimeFormat(input) {
+    // Extract date and time using regex
+    let match = input.match(/^(\d{2}-\d{2}-\d{4}) (\d{1,2}:\d{2} [APM]{2}) - (\d{1,2}:\d{2} [APM]{2})$/);
 
+    if (!match) return input;
+
+    let date = match[1]; // Extract the date
+    let startTime = moment(match[2], "h:mm A").format("HH:mm"); // Convert start time to 24-hour format
+    let endTime = moment(match[3], "h:mm A").format("HH:mm"); // Convert end time to 24-hour format
+
+    return `${date} ${startTime} - ${endTime}`;
+}
 function retrieve_booking_total_ajax( form_data ) {
 	
 	var condition = true;

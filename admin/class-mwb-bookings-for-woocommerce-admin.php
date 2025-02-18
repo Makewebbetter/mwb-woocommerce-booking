@@ -1039,6 +1039,22 @@ class Mwb_Bookings_For_Woocommerce_Admin {
 					'desc_tip'    => true,
 				)
 			);
+			
+			woocommerce_wp_select(
+				array(
+					'label'       => __( 'Booking Slot format', 'mwb-bookings-for-woocommerce' ),
+					'id'          => 'mwb_mbfw_booking_time_fromat',
+					'name'        => 'mwb_mbfw_booking_time_fromat',
+					'value'       => wps_booking_get_meta_data( get_the_ID(), 'mwb_mbfw_booking_time_fromat', true ),
+					'desc_tip'    => true,
+					'description' => __( 'Please select date format to display in fornt end while booking.', 'mwb-bookings-for-woocommerce' ),
+					'options'     => array(
+						'tewentyfour_hour'  => __( '24 hour', 'mwb-bookings-for-woocommerce' ),
+						'twelve_hour' => __( 'AM/PM', 'mwb-bookings-for-woocommerce' ),
+					),
+					'style'       => 'width:10em',
+				)
+			);
 
 			woocommerce_wp_checkbox(
 				array(
@@ -1156,6 +1172,7 @@ class Mwb_Bookings_For_Woocommerce_Admin {
 				'_sku'                                     => array_key_exists( '_sku', $_POST ) ? sanitize_text_field( wp_unslash( $_POST['_sku'] ) ) : '',
 				'_manage_stock'                            => array_key_exists( '_manage_stock', $_POST ) ? sanitize_text_field( wp_unslash( $_POST['_manage_stock'] ) ) : '',
 				'wps_mbfw_night_slots_enabled'             => array_key_exists( 'wps_mbfw_night_slots_enabled', $_POST ) ? sanitize_text_field( wp_unslash( $_POST['wps_mbfw_night_slots_enabled'] ) ) : '',
+				'mwb_mbfw_booking_time_fromat'             => array_key_exists( 'mwb_mbfw_booking_time_fromat', $_POST ) ? sanitize_text_field( wp_unslash( $_POST['mwb_mbfw_booking_time_fromat'] ) ) : '',
 				'wps_mbfw_day_and_days_upto_togather_enabled' => array_key_exists( 'wps_mbfw_day_and_days_upto_togather_enabled', $_POST ) ? sanitize_text_field( wp_unslash( $_POST['wps_mbfw_day_and_days_upto_togather_enabled'] ) ) : '',
 			);
 

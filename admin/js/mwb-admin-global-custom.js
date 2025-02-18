@@ -201,6 +201,7 @@ jQuery(document).ready(function($){
         $(document).find('#wps_mbfw_add_fields_wrapper').show();
         $(document).find('.mbfw_notice').show();
         $(document).find('.wps_mbfw_night_slots_enabled_field').show();
+        $(document).find('.mwb_mbfw_booking_time_fromat_field').show();
         $(document).find('.wps_mbfw_day_and_days_upto_togather_enabled_field').show();
         $(document).find('.Slots_tab').show();
 
@@ -222,6 +223,7 @@ jQuery(document).ready(function($){
         $(document).find('.mwb_mbfw_rescheduling_allowed_field').show();
         $(document).find('.mwb_bfwp_order_statuses_to_reschedule_field').show();
         $(document).find('.wps_mbfw_night_slots_enabled_field').hide();
+        $(document).find('.mwb_mbfw_booking_time_fromat_field').hide();
         $(document).find('.wps_mbfw_day_and_days_upto_togather_enabled_field').hide();
         $(document).find('.Slots_tab').hide();
 
@@ -243,6 +245,7 @@ jQuery(document).ready(function($){
             $(document).find('#wps_mbfw_add_fields_wrapper').show();
             $(document).find('.mbfw_notice').show();
             $(document).find('.wps_mbfw_night_slots_enabled_field').show();
+            $(document).find('.mwb_mbfw_booking_time_fromat_field').show();
             $(document).find('.wps_mbfw_day_and_days_upto_togather_enabled_field').show();
             $(document).find('.Slots_tab').show();
 
@@ -264,6 +267,7 @@ jQuery(document).ready(function($){
             $(document).find('.mbfw_notice').hide();
             $(document).find('.wps_mbfw_set_availability_upto_field').hide();
             $(document).find('.wps_mbfw_night_slots_enabled_field').hide();
+            $(document).find('.mwb_mbfw_booking_time_fromat_field').hide();
             $(document).find('.wps_mbfw_day_and_days_upto_togather_enabled_field').hide();
             $(document).find('.Slots_tab').hide();
 

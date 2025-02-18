@@ -841,7 +841,13 @@ jQuery(document).ready(function($){
                     var date_slots = wps_available_slots;
                 }
                     for(let i=0; i< date_slots.length; i++ ) { 
-                        var temp =  date_slots[i]._from + ' - ' + date_slots[i]._to;
+                        var start_time = date_slots[i]._from;
+                        var end_time = date_slots[i]._to;
+                        if ('twelve_hour' == mwb_mbfw_public_obj.wps_diaplay_time_format ) {
+                            start_time = moment(date_slots[i]._from, "HH:mm").format("h:mm A");
+                            end_time = moment(date_slots[i]._to, "HH:mm").format("h:mm A");
+                        }
+                        var temp =  start_time + ' - ' + end_time;
                         var temp_check = temp_date + temp;
                         if (booking_unavailable.length > 0) {
                             
